@@ -10,17 +10,17 @@ Data extracted must abide by those terms.
 
 
 ## Usage
-```python
+<pre>
  rn_corpus_scraper.py [-h] [--list LIST] [--resume RESUME]
                             [--sleep SLEEP] [--limit LIMIT] [-i INPUT]
                             [-o OUTPUT] [-v]
-```
+</pre>
 
 Query Russian National Corpus for Keyword in Context (kwic) results and export
 to tab-separated file.
 
 ## optional arguments
-```python
+<pre>
   -h, --help            show this help message and exit
   --list LIST           list of strings or tab-separated file containing list
                         of words to query (related pairs on same line).
@@ -33,7 +33,9 @@ to tab-separated file.
   -o OUTPUT, --output OUTPUT
                         output directory
   -v, --verbose         verbose printing
-```
+</pre>
 
 ## install
+```
 pip install requests bs4 lxml
+```
