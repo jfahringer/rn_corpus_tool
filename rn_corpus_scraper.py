@@ -401,7 +401,8 @@ def process_user_list(input_list="", **kwargs):
 		print("No words to query.")
 		return []
 
-	print("Word list to query:", word_list)
+	print("Word list to query:")
+	print('\t','\n\t'.join(['\t'.join([str(word) for word in row]) for row in word_list]))
 	return word_list
 
 
