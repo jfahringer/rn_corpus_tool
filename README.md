@@ -1,5 +1,5 @@
 # Russian National Corpus scraper
-A tool for keyword-in-context queries from the Russian National Corpus for scientific research.
+A tool to save the results of Russian National Corpus keyword-in-context queries for scientific research.
 
 
 ## Disclaimer
