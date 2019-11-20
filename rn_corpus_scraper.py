@@ -86,6 +86,7 @@ header_text = {
 				"date": "DATE"}
 
 rate_limit = 200  # milliseconds
+default_max_limit = 200000  # default limit for queries performed
 response_time = 0  # save last response time for backing off
 verbose = False  # verbose printing
 
@@ -275,7 +276,7 @@ def save_rnc_to_tsv(rnc_set, rnc_lex, rnc_rows, keys=headers):
 	return False
 
 
-def main(word_list=word_pairs, resume_lex="", sleep=rate_limit, max_limit=200000, verbose=False, **kwargs):
+def main(word_list=word_pairs, resume_lex="", sleep=rate_limit, max_limit=default_max_limit, verbose=False, **kwargs):
 	global rate_limit
 	if verbose:
 		verbose = True
@@ -288,7 +289,7 @@ def main(word_list=word_pairs, resume_lex="", sleep=rate_limit, max_limit=200000
 	else:
 		rate_limit = sleep
 	if max_limit <= 0:
-		max_limit = 0
+		max_limit = default_max_limit
 
 	total_queries = 0
 	if resume_lex is "":
@@ -297,6 +298,8 @@ def main(word_list=word_pairs, resume_lex="", sleep=rate_limit, max_limit=200000
 		begin = False
 
 	for i_set, word_set in enumerate(word_list):
+		verboseprint("Processing set ", str(i_set), word_set)
+		verboseprint("Query max limit :", str(max_limit), "\t total queries so far : ", str(total_queries))
 		if isinstance(word_set, str):
 			# if word_set is actually a word, make it into a 1-length list
 			word_set = [word_set]
@@ -319,6 +322,7 @@ def main(word_list=word_pairs, resume_lex="", sleep=rate_limit, max_limit=200000
 					total_queries += 1
 				save_rnc_to_tsv(i_set, word, rows)
 			if total_queries >= max_limit:
+				print("Stopped after ", str(total_queries), " queries.")
 				begin = False
 
 
@@ -406,7 +410,7 @@ if __name__ == '__main__':
 	parser.add_argument("--list", type=str, default="", help="list of strings or tab-separated file containing list of words to query (related pairs on same line).")
 	parser.add_argument("--resume", type=str, default="", help="resume from word in list")
 	parser.add_argument("--sleep", type=int, default=300, help="rate limit new queries performed (delay in milliseconds)")
-	parser.add_argument("--limit", type=int, default=0, help="limit number of queries performed")
+	parser.add_argument("--limit", type=int, default=default_max_limit, help="limit number of queries performed")
 	parser.add_argument("-i", "--input", type=str, default=input_dir, help="use saved input directory")
 	parser.add_argument("-o", "--output", type=str, default=output_dir, help="output directory")
 	parser.add_argument("-v", "--verbose", action='store_true', help="verbose printing")
