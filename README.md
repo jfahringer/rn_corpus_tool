@@ -1,14 +1,19 @@
 # Russian National Corpus scraper
 A tool to save the results of Russian National Corpus keyword-in-context queries for scientific research.
 
-[![DOI](https://zenodo.org/badge/222530191.svg)](https://zenodo.org/badge/latestdoi/222530191)
-
 
 ## Disclaimer
 This tool comes with NO WARRANTY of any kind and is licensed under GNU General Public License v3.0.
 
 Use of this scraper is subject to the terms and conditions of the Russian National Corpus available at http://ruscorpora.ru/new/corpora-usage.html
 Data extracted must abide by those terms.
+
+
+## Citation format
+
+Fahringer, J. 2019a, Russian National Corpus scraper: A tool to save the results of Russian National Corpus keyword-in-context queries, v1.0.0, Zenodo, doi:10.5281/zenodo.3548846
+
+[![DOI](https://zenodo.org/badge/222530191.svg)](https://zenodo.org/badge/latestdoi/222530191)
 
 
 ## Usage
